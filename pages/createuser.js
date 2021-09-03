@@ -27,8 +27,9 @@ const CreateUser = () => {
         })
     }
 
-    const handleSubmit = () => {
-
+    const handleSubmit = evt => {
+        evt.preventDefault()
+        console.table({name, email, phoneNumber})
     }
 
     const createUserForm = () => (
