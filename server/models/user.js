@@ -45,14 +45,14 @@ const userSchema = new mongoose.Schema({
 }, {timestamp: true}
 );
 
-//virtual fields
-userSchema.virtual()
+// //virtual fields
+// userSchema.virtual()
 
 
-//methods
-userSchema.methods = {
+// //methods
+// userSchema.methods = {
 
-}
+// }
 
 //export user model
 module.exports = mongoose.model('User', userSchema);

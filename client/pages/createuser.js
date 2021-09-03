@@ -2,6 +2,7 @@ import react from 'react';
 import {useState} from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
+// import {API} from '../config'
 
 const CreateUser = () => {
 
@@ -15,7 +16,7 @@ const CreateUser = () => {
         buttonText: 'Save'
     })
 
-    const {name, email, phoneNumber, address, error, success, button} = state;
+    const {name, email, phoneNumber, address, error, success, buttonText} = state;
 
     const handleChange = name => evt => {
         setState({
@@ -27,14 +28,28 @@ const CreateUser = () => {
         })
     }
 
-    const handleSubmit = evt => {
-        evt.preventDefault()
-        // console.table({name, email, phoneNumber})
-        axios.post(`http://localhost:8000/api/createUser`, {
-            name, email, phoneNumber, address
-        })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+    const handleSubmit = async evt => {
+        evt.preventDefault();
+        setState({...state, buttonText: 'Saving'});
+
+        try {
+            const res = await axios.post(`http://localhost:8000/api/createUser`, {
+                name, email, phoneNumber, address
+            })
+                console.log(res)
+                console.log('hello')
+                // setState({
+                //     ...state,
+                //     name: '',
+                //     email: '',
+                //     phoneNumber: '',
+                //     buttonText: 'Submitted',
+                //     success: res.data.message
+                // })
+        } catch (error) {
+            console.log(error)
+            // setState({...state, buttonText:'Save', error: error.response.data.error}) 
+        }
     }
 
     const createUserForm = () => (
@@ -61,6 +76,8 @@ const CreateUser = () => {
     )
     
     return <Layout>
+        {/* {success && success} */}
+        {/* {error && error} */}
         {createUserForm()}
         {JSON.stringify(state)}
         </Layout>
