@@ -1,6 +1,6 @@
 import react from 'react';
 import {useState} from 'react';
-
+import axios from 'axios';
 import Layout from '../components/Layout';
 
 const CreateUser = () => {
@@ -29,7 +29,12 @@ const CreateUser = () => {
 
     const handleSubmit = evt => {
         evt.preventDefault()
-        console.table({name, email, phoneNumber})
+        // console.table({name, email, phoneNumber})
+        axios.post(`http://localhost:8000/api/createUser`, {
+            name, email, phoneNumber, address
+        })
+        .then(res => console.log(res))
+        .catch(err => console.log(err))
     }
 
     const createUserForm = () => (

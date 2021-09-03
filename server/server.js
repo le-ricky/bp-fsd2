@@ -12,11 +12,15 @@ const authRoutes = require('./routes/auth');
 
 //app middlewares
 app.use(morgan('dev'));
+// app.use(bodyParser.json())
 app.use(express.json())
 app.use(express.urlencoded({
     extended: true
-  }));
-app.use(cors());
+}));
+
+//use cors()
+app.use(cors())
+
 
 //middleware
 app.use('/api', authRoutes)
