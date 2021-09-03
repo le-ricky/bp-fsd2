@@ -1,12 +1,14 @@
 const express = require('express')
 
-const app = express()
+const app = express();
 
-app.get('/api/regrister', (req, res) => {
-    res.json({
-        data: 'you hit regrister endpoint Nice!'
-    })
-})
+
+//import routes
+const authRoutes = require('./routes/auth');
+
+//middleware
+app.use('/api', authRoutes)
+
 
 const port = process.env.PORT || 8000;
 
