@@ -1,7 +1,4 @@
-const withCSS = require(@zeit/next-css);
-
-
-module.exports = withCSS({
+module.exports = {
   reactStrictMode: true,
   publicRuntimeConfig: {
     APP_NAME: 'bp-test',
@@ -9,4 +6,4 @@ module.exports = withCSS({
     PRODUCTION: false,
     DOMAIN: 'http://localhost:3000'
   }
-})
+}
