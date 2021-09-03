@@ -5,32 +5,48 @@ import Layout from '../components/Layout';
 
 const CreateUser = () => {
 
-    const [state, setState = useState({
+    const [state, setState ] = useState({
         name:'',
         email:'',
         phoneNumber:'',
         address:'',
         success:'',
         error:'',
-        
-    })]
+        buttonText: 'Save'
+    })
+
+    const {name, email, phoneNumber, address, error, success, button} = state;
+
+    const handleChange = name => evt => {
+        setState({
+            ...state,
+            [name]: evt.target.value,
+            error: '',
+            success: '',
+            buttonText: 'Save'
+        })
+    }
+
+    const handleSubmit = () => {
+
+    }
 
     const createUserForm = () => (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <input type="text" className="form-control" placeholder="Name"/>
+                <input value={name} onChange={handleChange('name')} type="text" className="form-control" placeholder="Name"/>
             </div>
             <div className="form-group">
-                <input type="email" className="form-control" placeholder="Email"/>
+                <input value={email} onChange={handleChange('email')} type="email" className="form-control" placeholder="Email"/>
             </div>
             <div className="form-group">
-                <input type="tel" className="form-control" placeholder="Phone Number"/>
+                <input value={phoneNumber} onChange={handleChange('phoneNumber')} type="tel" className="form-control" placeholder="Phone Number"/>
             </div>
             <div className="form-group">
-                <input type="text" className="form-control" placeholder="Address"/> 
+                <input value={address} onChange={handleChange('address')} type="text" className="form-control" placeholder="Address"/> 
             </div>
             <div className="form-group">
-                <button className="btn">Save</button> 
+                <button className="btn">{state.buttonText}</button> 
             </div>
             <div className="form-group">
                 <button className="btn">Delete</button> 
@@ -40,6 +56,7 @@ const CreateUser = () => {
     
     return <Layout>
         {createUserForm()}
+        {JSON.stringify(state)}
         </Layout>
 }
 export default CreateUser;
