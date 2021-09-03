@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/regrister', (req, res) => {
-    res.json({
-        data: 'you hit regrister middleware'
-    });
-});
+
+//import from controllers
+const { createUser } = require('../controllers/auth')
+
+router.get('/createUser', createUser);
 
 module.exports = router;
