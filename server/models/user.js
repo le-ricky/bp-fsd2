@@ -50,4 +50,9 @@ userSchema.virtual()
 
 
 //methods
-userSchema.methods
+userSchema.methods = {
+
+}
+
+//export user model
+module.exports = mongoose.model('User', userSchema);

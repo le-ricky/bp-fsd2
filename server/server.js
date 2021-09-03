@@ -1,10 +1,22 @@
 const express = require('express')
-
+// const mongoose = require('mongoose')
+const morgan = require('morgan')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+require('dotenv').config()
 const app = express();
 
 
 //import routes
 const authRoutes = require('./routes/auth');
+
+//app middlewares
+app.use(morgan('dev'));
+app.use(express.json())
+app.use(express.urlencoded({
+    extended: true
+  }));
+app.use(cors());
 
 //middleware
 app.use('/api', authRoutes)
