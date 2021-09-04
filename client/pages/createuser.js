@@ -2,6 +2,9 @@ import react from 'react';
 import {useState} from 'react';
 import axios from 'axios';
 import Layout from '../components/Layout';
+import TextField from '@material-ui/core/TextField';
+
+
 // import {API} from '../config'
 
 const CreateUser = () => {
@@ -55,16 +58,16 @@ const CreateUser = () => {
     const createUserForm = () => (
         <form onSubmit={handleSubmit}>
             <div className="form-group">
-                <input value={name} onChange={handleChange('name')} type="text" className="form-control" placeholder="Name"/>
+                <TextField variant="filled" label="Name" fullWidth margin="normal" value={name} onChange={handleChange('name')}/>
             </div>
             <div className="form-group">
-                <input value={email} onChange={handleChange('email')} type="email" className="form-control" placeholder="Email"/>
+                <TextField variant="filled" label="Email" fullWidth margin="normal" value={name} onChange={handleChange('name')}/>
             </div>
             <div className="form-group">
-                <input value={phoneNumber} onChange={handleChange('phoneNumber')} type="tel" className="form-control" placeholder="Phone Number"/>
+                <TextField variant="filled" label="Phone Number" fullWidth margin="normal" value={name} onChange={handleChange('name')} />
             </div>
             <div className="form-group">
-                <input value={address} onChange={handleChange('address')} type="text" className="form-control" placeholder="Address"/> 
+                <TextField variant="filled" label="Address" fullWidth margin="normal" value={name} onChange={handleChange('name')} />
             </div>
             <div className="form-group">
                 <button className="btn">{state.buttonText}</button> 
